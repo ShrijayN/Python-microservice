@@ -1,0 +1,23 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: api-deployment
+  labels:
+    app: app-api
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: app-api
+  template:
+    metadata:
+      labels:
+        app: app-api
+    spec:
+      containers:
+        - name: app-api
+          image: api-route
+          imagePullPolicy: IfNotPresent
+          ports:
+            - containerPort: 8080
